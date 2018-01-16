@@ -36,6 +36,7 @@ function submitUser() {
 
 }
 
+<<<<<<< HEAD
 function testYelp() {
 
   const searchRequest = {
@@ -66,6 +67,24 @@ function testYelp() {
     console.log(err)
   })
 
+}
+
+function loginUser() {
+  var data = {}
+  if (form.email.value) data.email = form.email.value
+  if (form.password.value) data.password = form.password.value
+
+  if (!data.email) return displayError('Must provide email')
+  if (!data.password) return displayError('Must provide password')
+  console.log(data)
+  fetch('/loginUser', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then(submitSuccess)
+  .catch(submitError)
 }
 
 /*=============================================

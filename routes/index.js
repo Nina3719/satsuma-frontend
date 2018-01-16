@@ -11,6 +11,18 @@ router.get('/', (req, res, next) => {
     return res.render('index');
 });
 
+router.get('/login', (req, res, next) => {
+	return res.render('login')
+})
+
+router.post('/loginUser', (req, res, next) => {
+	console.log(req.body)
+	request.post({
+		url: config.apiUrl + '/auth/login',
+		form: req.body
+	}).pipe(res)
+})
+
 router.post('/register', (req, res, next) => {
   request.post({
       url: config.apiUrl + '/users',
