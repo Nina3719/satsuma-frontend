@@ -6,11 +6,22 @@ const form = document.forms[0]
 
 function submitUser() {
   var data = {}
+
   if (form.email.value) data.email = form.email.value
   if (form.password.value) data.password = form.password.value
+  if (form.name.value) data.name = form.name.value
+  if (form.phoneNumber.value) data.phoneNumber = form.phoneNumber.value
+  if (form.phoneProvider.value) data.phoneProvider = form.phoneProvider.value
+  if (form.classYear.value) data.classYear = form.classYear.value
+
+  console.log(data)
 
   if (!data.email) return displayError('Must provide email')
   if (!data.password) return displayError('Must provide password')
+  if (!data.name) return displayError('Must provide name')
+  if (!data.phoneNumber) return displayError('Must provide phone number')
+  if (!data.phoneProvider) return displayError('Must provide phone provider')
+  if (!data.classYear) return displayError('Must provide class year')
   if (data.password !== form.confirm.value) return displayError('Passwords do not match')
 
   fetch('/register', {
