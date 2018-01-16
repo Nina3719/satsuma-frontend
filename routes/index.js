@@ -14,4 +14,7 @@ router.post('/register', (req, res, next) => {
   }).pipe(res)
 })
 
+router.get('/homepage', (req, res, next) => {
+	return res.render('homepage')
+})
 module.exports = router;

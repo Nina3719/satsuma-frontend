@@ -46,9 +46,8 @@ function submitSuccess(res) {
     if (!res.ok) {
       return submitError(res);
     }
-    var modal = document.getElementById('js-success');
-    modal.style.display = 'block';
-    clearForm();
+    clearForm()
+    window.location = '/homepage';
 }
 
 function submitError(res, message) {
