@@ -1,6 +1,12 @@
 extends template
 
 block content
+	p Hi!
+	div #{restaurants}
+
+	script.
+		testYelp()
+			
       form
         br
         br
@@ -30,5 +36,3 @@ block content
           //-         br
           //-         input(type='number' name='quantity' placeholder='add amount')  
                 button#sub(class='button' onclick='addToCart()') Add to cart
-                
-          

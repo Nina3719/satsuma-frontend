@@ -1,9 +1,7 @@
 doctype html
 
 html
-  
   head
-    
     title= title || "Satsuma"
     
     link(rel='stylesheet', href='/stylesheets/style.css')
@@ -23,8 +21,9 @@ html
         
   
   body
+  	script(src='/js/script.min.js')
     block content
-    script(src='/js/script.min.js')
     if token
         script localStorage.token = "#{token}"
       
+

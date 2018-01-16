@@ -19,7 +19,8 @@
     "pug": "^2.0.0-beta6",
     "pug-bootstrap": "0.0.15",
     "request": "^2.79.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "yelp-fusion": "^2.0.3"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
