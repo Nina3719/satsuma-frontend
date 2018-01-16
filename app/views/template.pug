@@ -1,11 +1,30 @@
 doctype html
+
 html
+  
   head
-    title= title || "CHANGE TITLE IN TEMPLATE.PUG"
+    
+    title= title || "Satsuma"
+    
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/js/fetch.js')
+    
+    #navbar
+      #nba 
+        a(href='/homepage')
+          span Satsuma
+      
+      #nb-items
+        a(href='/login')
+          span login
+      #nb-items 
+        a(href='/')
+          span register  
+        
+  
   body
     block content
     script(src='/js/script.min.js')
     if token
         script localStorage.token = "#{token}"
+      

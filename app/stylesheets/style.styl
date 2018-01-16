@@ -1,4 +1,5 @@
 @require "helpers"
+@require "table"
 
 .error-message
     visibility hidden
@@ -26,8 +27,120 @@
     border-radius 5px
     text-align center
 
+text-color = #000
+mobile-width = 600px
+
+body
+  margin 0
+  padding 0
+  font-family Montserrat-Medium
+
+#navbar
+  position relative
+  top 0
+  left 0
+  margin-bottom 50px
+  width calc(100% - 40px)
+  padding 20px
+  overflow hidden
+  text-decoration none
+  background #7d7e7d
+  background -moz-linear-gradient(top, #7d7e7d 0%, #0e0e0e 100%)
+  background -webkit-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%)
+  background linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 100%)
 
 
+#nba:hover
+  opacity 0.8
+  cursor pointer
+  color black
+  margin-left -20px
+  padding-left 20px
+  padding-right 20px
 
 
+#navbar a
+  float left
+  display block
+  color #f2f2f2
+  text-align center
+  padding 14px 16px
+  text-decoration none
 
+#navbar span
+  color white
+  font-size 2em
+  text-transform uppercase
+  font-family Montserrat-Medium
+  text-decoration none
+  padding: 10px
+
+#nb-items
+  float right
+  text-align center
+  text-decoration none
+
+#nb-items:hover
+  opacity 0.8
+  cursor pointer
+  color black
+  background-color red
+  margin-left -20px
+  padding-left 20px
+  padding-right 20px
+
+#nb-items *
+  padding-left 20px
+  text-decoration none
+
+.form-box
+  width 50%
+  margin 0px 25%
+  box-shadow 0px 0px 20px #CCC
+  padding 30px
+
+.fb-item
+  margin 20px
+
+.fb-item input
+  width 100%
+  font-size 1.2em
+
+.fb-item input:focus
+  background #E6E6FA
+
+#submit
+  bottom 0
+  left 0
+  width 100%
+  background #7d7e7d
+  background -moz-linear-gradient(top, #7d7e7d 0%, #0e0e0e 100%)
+  background -webkit-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%)
+  background linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 100%)
+  padding 20px
+  text-align center
+  color white
+  font-size 1.4em
+  text-transform uppercase
+  border none
+
+#submit:hover
+  opacity 0.8
+  cursor pointer
+
+#sub
+  width 80%
+  background -webkit-linear-gradient(-68deg, #ac32e4 , #4801ff)
+  background -o-linear-gradient(-68deg, #ac32e4 , #4801ff)
+  background -moz-linear-gradient(-68deg, #ac32e4 , #4801ff)
+  background linear-gradient(-68deg, #ac32e4 , #4801ff)
+  padding 20px
+  text-align center
+  color white
+  font-size 0.5em
+  text-transform uppercase
+  border none
+
+#sub:hover
+  opacity 0.8
+  cursor pointer

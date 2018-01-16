@@ -7,6 +7,10 @@ router.get('/', (req, res, next) => {
     return res.render('index');
 });
 
+// router.get('/tem', (req, res, next) => {
+//     return res.render('t');
+// });
+
 router.post('/register', (req, res, next) => {
   request.post({
       url: config.apiUrl + '/users',
