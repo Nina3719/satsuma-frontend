@@ -1,5 +1,6 @@
 const form = document.forms[0]
 
+
 /*=============================================
 =            Form Submit Functions            =
 =============================================*/
@@ -35,6 +36,38 @@ function submitUser() {
 
 }
 
+function testYelp() {
+
+  const searchRequest = {
+      location: 'cambridge, ma',
+      categories: 'restaurants',
+      sort_by: 'rating',
+      open_now: true
+    };
+  
+  fetch('/yelptest', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(searchRequest)
+  }).then(function(res) {
+    if(!res.ok) {
+      res.text()
+      .then(function(message) {
+        alert(message)
+      })
+    }
+    res.json()
+    .then(function(data) {
+      alert(JSON.stringify(data))
+    })
+  }).catch(function(err) {
+    console.log(err)
+  })
+
+}
+
 /*=============================================
 =            Form Submit Callbacks            =
 =============================================*/
@@ -58,7 +91,7 @@ function submitSuccess(res) {
       return submitError(res);
     }
     clearForm()
-    window.location = '/homepage';
+    testYelp()
 }
 
 function submitError(res, message) {
@@ -73,3 +106,4 @@ function displayError(message) {
     errorDiv.innerHTML = message;
     errorDiv.style.visibility = 'visible';
 }
+
