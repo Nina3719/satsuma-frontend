@@ -52,6 +52,7 @@ function loginUser() {
   }).then(submitSuccess)
   .catch(submitError)
 }
+
 /*=============================================
 =            Form Submit Callbacks            =
 =============================================*/
