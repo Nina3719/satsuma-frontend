@@ -7,9 +7,17 @@ router.get('/', (req, res, next) => {
     return res.render('index');
 });
 
-// router.get('/tem', (req, res, next) => {
-//     return res.render('t');
-// });
+router.get('/login', (req, res, next) => {
+	return res.render('login')
+})
+
+router.post('/loginUser', (req, res, next) => {
+	console.log(req.body)
+	request.post({
+		url: config.apiUrl + '/auth/login',
+		form: req.body
+	}).pipe(res)
+})
 
 router.post('/register', (req, res, next) => {
   request.post({
@@ -18,4 +26,7 @@ router.post('/register', (req, res, next) => {
   }).pipe(res)
 })
 
+router.get('/homepage', (req, res, next) => {
+	return res.render('homepage')
+})
 module.exports = router;

@@ -35,6 +35,23 @@ function submitUser() {
 
 }
 
+function loginUser() {
+  var data = {}
+  if (form.email.value) data.email = form.email.value
+  if (form.password.value) data.password = form.password.value
+
+  if (!data.email) return displayError('Must provide email')
+  if (!data.password) return displayError('Must provide password')
+  console.log(data)
+  fetch('/loginUser', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then(submitSuccess)
+  .catch(submitError)
+}
 /*=============================================
 =            Form Submit Callbacks            =
 =============================================*/
@@ -57,9 +74,8 @@ function submitSuccess(res) {
     if (!res.ok) {
       return submitError(res);
     }
-    var modal = document.getElementById('js-success');
-    modal.style.display = 'block';
-    clearForm();
+    clearForm()
+    window.location = '/homepage';
 }
 
 function submitError(res, message) {
