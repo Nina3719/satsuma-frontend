@@ -1,6 +1,5 @@
 
 
-
 /*=============================================
 =            Form Submit Functions            =
 =============================================*/
@@ -31,10 +30,16 @@ function submitUser() {
     },
     method: 'POST',
     body: JSON.stringify(data)
-  }).then(submitSuccess)
+  }).then(function(res) {
+    res.json()
+    .then(function(data){
+      sessionStorage.setItem('user_id', data.userId)
+      submitSuccess(res)
+    })
+  })
   .catch(submitError)
-
 }
+
 
 function getYelp() {
 
@@ -83,7 +88,13 @@ function loginUser() {
     },
     method: 'POST',
     body: JSON.stringify(data)
-  }).then(submitSuccess)
+  }).then(function(res) {
+    res.json()
+    .then(function(data){
+      sessionStorage.setItem('user_id', data.userId)
+      submitSuccess(res)
+    })
+  })
   .catch(submitError)
 }
 
@@ -106,7 +117,8 @@ function clearError(target) {
 
 
 function submitSuccess(res) {
-    console.log(res.ok)
+    storage = sessionStorage.getItem('user_id')
+    console.log(storage)
     console.log('hi')
     if (!res.ok) {
       return submitError(res);
@@ -211,6 +223,10 @@ function makeButton(element) {
 }
 
 function loadRestaurant(id) {
+  loggedIn = sessionStorage.getItem('user_id')
+  if (!loggedIn) {
+    window.location = '/'
+  }
   var restaurants = JSON.parse(localStorage.getItem('restaurants'))
 
   var restaurants_result = restaurants.filter(function(el) {return (el.id === id)})
@@ -265,6 +281,4 @@ function loadRestaurant(id) {
   restUrl.innerHTML = 'Go to restaurant\'s website!'
   restUrlDiv.appendChild(restUrl)
   parent.appendChild(restUrlDiv)
-
-
 }
