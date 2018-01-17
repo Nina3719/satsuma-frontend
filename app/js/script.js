@@ -149,7 +149,7 @@ function populateYelp(res) {
     var restPic= document.createElement('tr')
     var restPicImg = document.createElement('img')
     restPicImg.src = restaurants[i].image_url
-    restPicImg.style.width = '300px'
+    restPicImg.style.width = 'auto'
     restPicImg.style.height = '300px'
     restPicImg.style.borderBottomLeftRadius = "25px"
     restPicImg.style.borderBottomRightRadius = "25px"
@@ -229,7 +229,7 @@ function loadRestaurant(id) {
   var restPic= document.createElement('div')
   var restPicImg = document.createElement('img')
   restPicImg.src = restaurant.image_url
-  restPicImg.style.width = '300px'
+  restPicImg.style.width = 'auto'
   restPicImg.style.height = '300px'
   restPic.appendChild(restPicImg)
   parent.appendChild(restPic)
