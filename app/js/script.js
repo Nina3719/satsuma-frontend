@@ -207,6 +207,9 @@ function makeButton(element) {
   element.style.borderRight = '1px solid #333333';
   element.style.borderBottom = '1px solid #333333';
   element.style.borderLeft = '1px solid #CCCCCC';
+  element.style.borderRadius = '16px'
+  element.style.borderColor = 'transparent'
+  element.style.boxShadow = '2.5px 5px #888888'
   return element
 }
 
