@@ -48,4 +48,9 @@ router.post('/yelptest', (req, res, next) => {
  //    console.log(e);
  //  	});
 })
+
+router.get('/restaurants/:id/id', (req, res, next) => {
+	return res.render('restaurant-page', { id: req.params.id })
+})
+
 module.exports = router;

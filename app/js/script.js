@@ -129,23 +129,28 @@ function displayError(message) {
 }
 
 function populateYelp(res) {
+
+  if(localStorage.getItem('restaurants')) {
+    localStorage.setItem('restaurants', '')
+  }
+
   var restaurants = JSON.parse(res.body).businesses
-  console.log(restaurants)
+  localStorage.setItem('restaurants', JSON.stringify(restaurants))
 
   for(var i = 0; i < restaurants.length; i++) {
-    var newRow = document.createElement('tr')
+    var newRow = document.createElement('td')
 
-    var restName = document.createElement('td')
+    var restName = document.createElement('th')
     restName.innerHTML = restaurants[i].name
     newRow.appendChild(restName)
 
-    var restPic= document.createElement('td')
+    var restPic= document.createElement('tr')
     var restPicImg = document.createElement('img')
     restPicImg.src = restaurants[i].image_url
     restPic.appendChild(restPicImg)
     newRow.appendChild(restPic)
 
-    var restDes = document.createElement('td')
+    var restDes = document.createElement('tr')
     var string = ''
     for (var j = 0; j < restaurants[i].categories.length; j++) {
       string += (restaurants[i].categories[j].title + '; ')
@@ -153,11 +158,29 @@ function populateYelp(res) {
     restDes.innerHTML = string
     newRow.appendChild(restDes)
 
-    var restPrice = document.createElement('td')
+    var restPrice = document.createElement('tr')
     restPrice.innerHTML = restaurants[i].price
     newRow.appendChild(restPrice)
+
+    var restRat = document.createElement('tr')
+    restRat.innerHTML = restaurants[i].rating
+    newRow.appendChild(restRat)
+
+    var restGo = document.createElement('tr')
+    var restLink = document.createElement('a')
+    restLink.href = '/restaurants/' + restaurants[i].id + '/id'
+    restLink.innerHTML = 'Eat here!'
+    restGo.appendChild(restLink)
+    newRow.appendChild(restGo)
 
     document.getElementById("yelpTable").appendChild(newRow)
   }
 }
 
+function loadRestaurant(id) {
+  var restaurants = JSON.parse(localStorage.getItem('restaurants'))
+
+  var restaurant = restaurants.filter(function(el) {return (el.id === id)})
+
+  alert(JSON.stringify(restaurant))
+}
