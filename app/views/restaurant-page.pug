@@ -2,6 +2,10 @@ extends template
 
 block content
 	div#restaurantInfo
+	form#appointmentSubmit
+		input(type="time" name="appointment_time" placeholder="12:00")
+		- var fun = 'makeAppointment(' + "'" + id + "'" + ')'
+		button(type='submit' name="appointment_submit" value="Sign Up!" onclick=fun )
 	script.
 
 		loadRestaurant("#{id}")

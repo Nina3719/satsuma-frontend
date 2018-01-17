@@ -266,5 +266,15 @@ function loadRestaurant(id) {
   restUrlDiv.appendChild(restUrl)
   parent.appendChild(restUrlDiv)
 
+}
 
+function makeAppointment(restId) {
+  console.log('hi')
+
+  var form = document.forms[0]
+
+  console.log(restId)
+
+  var appointment_time = form.appointment_time.value
+  console.log(appointment_time)
 }
