@@ -182,7 +182,58 @@ function populateYelp(res) {
 function loadRestaurant(id) {
   var restaurants = JSON.parse(localStorage.getItem('restaurants'))
 
-  var restaurant = restaurants.filter(function(el) {return (el.id === id)})
+  var restaurants_result = restaurants.filter(function(el) {return (el.id === id)})
 
-  alert(JSON.stringify(restaurant))
+  var restaurant = restaurants_result[0]
+
+  var parent = document.getElementById('restaurantInfo')
+
+  var restName = document.createElement('div')
+  restName.innerHTML = restaurant.name
+  parent.appendChild(restName)
+
+  var restPic= document.createElement('div')
+  var restPicImg = document.createElement('img')
+  restPicImg.src = restaurant.image_url
+  restPicImg.style.width = '300px'
+  restPicImg.style.height = '300px'
+  restPic.appendChild(restPicImg)
+  parent.appendChild(restPic)
+
+  var restDes = document.createElement('div')
+  var stringDes = ''
+  for (var j = 0; j < restaurant.categories.length; j++) {
+    stringDes += (restaurant.categories[j].title + '; ')
+  }
+  restDes.innerHTML = stringDes
+  parent.appendChild(restDes)
+
+  var restPrice = document.createElement('div')
+  restPrice.innerHTML = restaurant.price
+  parent.appendChild(restPrice)
+
+  var restRat = document.createElement('div')
+  restRat.innerHTML = restaurant.rating
+  parent.appendChild(restRat)
+
+  var restAddr = document.createElement('div')
+  var stringAddr = ''
+  for (var k = 0; k < restaurant.location.display_address.length; k++) {
+    stringAddr += (restaurant.location.display_address[k] + ', ')
+  }
+  restAddr.innerHTML = stringAddr
+  parent.appendChild(restAddr)
+
+  var restPhone = document.createElement('div')
+  restPhone.innerHTML = restaurant.display_phone
+  parent.appendChild(restPhone)
+
+  var restUrlDiv = document.createElement('div')
+  var restUrl = document.createElement('a')
+  restUrl.href = restaurant.url
+  restUrl.innerHTML = 'Go to restaurant\'s website!'
+  restUrlDiv.appendChild(restUrl)
+  parent.appendChild(restUrlDiv)
+
+  
 }
