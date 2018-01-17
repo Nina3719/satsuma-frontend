@@ -21,9 +21,9 @@ html
         
   
   body
-  	script(src='/js/script.min.js')
+    script(src='/js/script.min.js')
     block content
     if token
-        script localStorage.token = "#{token}"
+      script localStorage.token = "#{token}"
       
 

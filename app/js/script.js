@@ -1,4 +1,4 @@
-const form = document.forms[0]
+
 
 
 /*=============================================
@@ -6,16 +6,16 @@ const form = document.forms[0]
 =============================================*/
 
 function submitUser() {
+  var form = document.forms[0]
   var data = {}
 
+  console.log('hi')
   if (form.email.value) data.email = form.email.value
   if (form.password.value) data.password = form.password.value
   if (form.name.value) data.name = form.name.value
   if (form.phoneNumber.value) data.phoneNumber = form.phoneNumber.value
   if (form.phoneProvider.value) data.phoneProvider = form.phoneProvider.value
   if (form.classYear.value) data.classYear = form.classYear.value
-
-  console.log(data)
 
   if (!data.email) return displayError('Must provide email')
   if (!data.password) return displayError('Must provide password')
@@ -36,7 +36,6 @@ function submitUser() {
 
 }
 
-<<<<<<< HEAD
 function testYelp() {
 
   const searchRequest = {
@@ -70,6 +69,8 @@ function testYelp() {
 }
 
 function loginUser() {
+  var form = document.forms[0]
+
   var data = {}
   if (form.email.value) data.email = form.email.value
   if (form.password.value) data.password = form.password.value
@@ -106,11 +107,13 @@ function clearError(target) {
 
 
 function submitSuccess(res) {
+    console.log(res.ok)
+    console.log('hi')
     if (!res.ok) {
       return submitError(res);
     }
-    clearForm()
-    testYelp()
+    // clearForm() to be fixed, there's ambiguity on line 95 about 'form'
+    window.location = '/homepage'
 }
 
 function submitError(res, message) {

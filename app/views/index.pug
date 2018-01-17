@@ -2,7 +2,7 @@ extends template
 
 block content
     #js-error-message.error-message
-    form          
+    form(id="register")        
         .form-box(style='text-align:center')
             h2 Register
             .fb-item
@@ -33,7 +33,7 @@ block content
                 span Class Year
                 br
                 input(type='number' name='classYear' placeholder='2020') 
-            button#submit(type='button' onclick='submitUser()') Register
+                button#submit(type='button' onclick='submitUser()') Register
 
     .modal#js-success
         .modal-content
