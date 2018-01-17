@@ -141,6 +141,8 @@ function populateYelp(res) {
     var newRow = document.createElement('td')
 
     var restName = document.createElement('th')
+    restName.style.borderTopLeftRadius = "25px"
+    restName.style.borderTopRightRadius= "25px"
     restName.innerHTML = restaurants[i].name
     newRow.appendChild(restName)
 
@@ -149,6 +151,8 @@ function populateYelp(res) {
     restPicImg.src = restaurants[i].image_url
     restPicImg.style.width = '300px'
     restPicImg.style.height = '300px'
+    restPicImg.style.borderBottomLeftRadius = "25px"
+    restPicImg.style.borderBottomRightRadius = "25px"
     restPic.appendChild(restPicImg)
     newRow.appendChild(restPic)
 
@@ -169,7 +173,9 @@ function populateYelp(res) {
     newRow.appendChild(restRat)
 
     var restGo = document.createElement('tr')
-    var restLink = document.createElement('a')
+    var restLinkPre = document.createElement('a')
+
+    var restLink = makeButton(restLinkPre)
     restLink.href = '/restaurants/' + restaurants[i].id + '/id'
     restLink.innerHTML = 'Eat here!'
     restGo.appendChild(restLink)
@@ -177,6 +183,18 @@ function populateYelp(res) {
 
     document.getElementById("yelpTable").appendChild(newRow)
   }
+}
+
+function makeButton(element) {
+  element.style.textDecoration = 'none';
+  element.style.backgroundColor = '#EEEEEE';
+  element.style.color = '#333333';
+  element.style.padding = '2px 6px 2px 6px';
+  element.style.borderTop = '1px solid #CCCCCC';
+  element.style.borderRight = '1px solid #333333';
+  element.style.borderBottom = '1px solid #333333';
+  element.style.borderLeft = '1px solid #CCCCCC';
+  return element 
 }
 
 function loadRestaurant(id) {
