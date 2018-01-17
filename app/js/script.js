@@ -45,7 +45,7 @@ function getYelp() {
       sort_by: 'rating',
       open_now: true
     };
-  
+
   fetch('/yelptest', {
     headers: {
       'Content-Type': 'application/json',
@@ -147,6 +147,8 @@ function populateYelp(res) {
     var restPic= document.createElement('tr')
     var restPicImg = document.createElement('img')
     restPicImg.src = restaurants[i].image_url
+    restPicImg.style.width = '300px'
+    restPicImg.style.height = '300px'
     restPic.appendChild(restPicImg)
     newRow.appendChild(restPic)
 
