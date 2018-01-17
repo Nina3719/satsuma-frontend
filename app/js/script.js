@@ -169,15 +169,22 @@ function populateYelp(res) {
     newRow.appendChild(restRat)
 
     var restGo = document.createElement('tr')
-    var restLink = document.createElement('a')
-    restLink.href = '/restaurants/' + restaurants[i].id + '/id'
+    var restLink = document.createElement('BUTTON')
+    // restLink.href = '/restaurants/' + restaurants[i].id + '/id'
+
+    function visitPage(){
+      window.location = '/restaurants/' + restaurants[i].id + '/id'
+    }
+
+    restLink.click = visitPage();
     restLink.innerHTML = 'Eat here!'
     restGo.appendChild(restLink)
     newRow.appendChild(restGo)
-
     document.getElementById("yelpTable").appendChild(newRow)
   }
 }
+
+
 
 function loadRestaurant(id) {
   var restaurants = JSON.parse(localStorage.getItem('restaurants'))
