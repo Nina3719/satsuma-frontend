@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
+	console.log(data)
 	return res.render('login')
 })
 

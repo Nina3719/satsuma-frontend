@@ -1,6 +1,5 @@
 
 
-
 /*=============================================
 =            Form Submit Functions            =
 =============================================*/
@@ -31,10 +30,16 @@ function submitUser() {
     },
     method: 'POST',
     body: JSON.stringify(data)
-  }).then(submitSuccess)
+  }).then(function(res) {
+    res.json()
+    .then(function(data){
+      sessionStorage.setItem('user_id', data.userId)
+      submitSuccess(res)
+    })
+  })
   .catch(submitError)
-
 }
+
 
 function getYelp() {
 
@@ -83,7 +88,13 @@ function loginUser() {
     },
     method: 'POST',
     body: JSON.stringify(data)
-  }).then(submitSuccess)
+  }).then(function(res) {
+    res.json()
+    .then(function(data){
+      sessionStorage.setItem('user_id', data.userId)
+      submitSuccess(res)
+    })
+  })
   .catch(submitError)
 }
 
@@ -106,7 +117,8 @@ function clearError(target) {
 
 
 function submitSuccess(res) {
-    console.log(res.ok)
+    storage = sessionStorage.getItem('user_id')
+    console.log(storage)
     console.log('hi')
     if (!res.ok) {
       return submitError(res);
@@ -149,7 +161,7 @@ function populateYelp(res) {
     var restPic= document.createElement('tr')
     var restPicImg = document.createElement('img')
     restPicImg.src = restaurants[i].image_url
-    restPicImg.style.width = '300px'
+    restPicImg.style.width = 'auto'
     restPicImg.style.height = '300px'
     restPicImg.style.borderBottomLeftRadius = "25px"
     restPicImg.style.borderBottomRightRadius = "25px"
@@ -207,10 +219,17 @@ function makeButton(element) {
   element.style.borderRight = '1px solid #333333';
   element.style.borderBottom = '1px solid #333333';
   element.style.borderLeft = '1px solid #CCCCCC';
+  element.style.borderRadius = '16px'
+  element.style.borderColor = 'transparent'
+  element.style.boxShadow = '2.5px 5px #888888'
   return element
 }
 
 function loadRestaurant(id) {
+  loggedIn = sessionStorage.getItem('user_id')
+  if (!loggedIn) {
+    window.location = '/'
+  }
   var restaurants = JSON.parse(localStorage.getItem('restaurants'))
 
   var restaurants_result = restaurants.filter(function(el) {return (el.id === id)})
@@ -226,7 +245,7 @@ function loadRestaurant(id) {
   var restPic= document.createElement('div')
   var restPicImg = document.createElement('img')
   restPicImg.src = restaurant.image_url
-  restPicImg.style.width = '300px'
+  restPicImg.style.width = 'auto'
   restPicImg.style.height = '300px'
   restPic.appendChild(restPicImg)
   parent.appendChild(restPic)
