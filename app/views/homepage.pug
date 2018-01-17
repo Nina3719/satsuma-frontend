@@ -1,8 +1,38 @@
 extends template
 
-block content 
+block content
 	p Hi!
 	div #{restaurants}
 
 	script.
 		testYelp()
+			
+      form
+        br
+        br
+        table#keywords(style="width:80%" align="center" cellspacing="0" cellpadding="0")
+          thead
+            tr
+              th#name Name 
+              th#pic Picture
+              th#desc Description
+              th#price Price 
+              th#quan Quantity 
+              th Eat Here
+          //- tbody
+          //- each item in JSON.parse(items)
+          //-   tr
+          //-     td=item.name
+          //-     //- td=item.pic
+          //-     td
+          //-       img(src=item.pic width="200" height="200")
+          //-       //- img(src="https://i5.walmartimages.com/asr/8af31780-9c2f-4415-8311-4b73260fdec8_1.e6217836ba781f7a591a2762bc167e52.jpeg")
+          //-     td=item.description
+          //-     td=item.price 
+          //-     td=item.quantity
+          //-     td
+          //-       .fb-item
+          //-         span Quantity
+          //-         br
+          //-         input(type='number' name='quantity' placeholder='add amount')  
+                button#sub(class='button' onclick='addToCart()') Add to cart
