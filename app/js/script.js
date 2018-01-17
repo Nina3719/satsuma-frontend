@@ -36,11 +36,12 @@ function submitUser() {
 
 }
 
-function testYelp() {
+function getYelp() {
 
   const searchRequest = {
       location: 'cambridge, ma',
       categories: 'restaurants',
+      limit: 50,
       sort_by: 'rating',
       open_now: true
     };
@@ -59,9 +60,7 @@ function testYelp() {
       })
     }
     res.json()
-    .then(function(data) {
-      alert(JSON.stringify(data))
-    })
+    .then(populateYelp)
   }).catch(function(err) {
     console.log(err)
   })
@@ -127,5 +126,38 @@ function displayError(message) {
     var errorDiv = document.getElementById('js-error-message');
     errorDiv.innerHTML = message;
     errorDiv.style.visibility = 'visible';
+}
+
+function populateYelp(res) {
+  var restaurants = JSON.parse(res.body).businesses
+  console.log(restaurants)
+
+  for(var i = 0; i < restaurants.length; i++) {
+    var newRow = document.createElement('tr')
+
+    var restName = document.createElement('td')
+    restName.innerHTML = restaurants[i].name
+    newRow.appendChild(restName)
+
+    var restPic= document.createElement('td')
+    var restPicImg = document.createElement('img')
+    restPicImg.src = restaurants[i].image_url
+    restPic.appendChild(restPicImg)
+    newRow.appendChild(restPic)
+
+    var restDes = document.createElement('td')
+    var string = ''
+    for (var j = 0; j < restaurants[i].categories.length; j++) {
+      string += (restaurants[i].categories[j].title + '; ')
+    }
+    restDes.innerHTML = string
+    newRow.appendChild(restDes)
+
+    var restPrice = document.createElement('td')
+    restPrice.innerHTML = restaurants[i].price
+    newRow.appendChild(restPrice)
+
+    document.getElementById("yelpTable").appendChild(newRow)
+  }
 }
 

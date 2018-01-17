@@ -1,17 +1,12 @@
 extends template
 
 block content
-	p Hi!
-	div #{restaurants}
-
-	script.
-		testYelp()
-			
-      form
+  div #{restaurants}
+  form
         br
         br
         table#keywords(style="width:80%" align="center" cellspacing="0" cellpadding="0")
-          thead
+          thead(id="yelpTable")
             tr
               th#name Name 
               th#pic Picture
@@ -36,3 +31,7 @@ block content
           //-         br
           //-         input(type='number' name='quantity' placeholder='add amount')  
                 button#sub(class='button' onclick='addToCart()') Add to cart
+  script.
+    getYelp()
+
+      
