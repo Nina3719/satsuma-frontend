@@ -141,6 +141,8 @@ function populateYelp(res) {
     var newRow = document.createElement('td')
 
     var restName = document.createElement('th')
+    restName.style.borderTopLeftRadius = "25px"
+    restName.style.borderTopRightRadius= "25px"
     restName.innerHTML = restaurants[i].name
     newRow.appendChild(restName)
 
@@ -149,6 +151,8 @@ function populateYelp(res) {
     restPicImg.src = restaurants[i].image_url
     restPicImg.style.width = '300px'
     restPicImg.style.height = '300px'
+    restPicImg.style.borderBottomLeftRadius = "25px"
+    restPicImg.style.borderBottomRightRadius = "25px"
     restPic.appendChild(restPicImg)
     newRow.appendChild(restPic)
 
@@ -169,14 +173,21 @@ function populateYelp(res) {
     newRow.appendChild(restRat)
 
     var restGo = document.createElement('tr')
-    var restLink = document.createElement('BUTTON')
-    // restLink.href = '/restaurants/' + restaurants[i].id + '/id'
 
-    function visitPage(){
-      window.location = '/restaurants/' + restaurants[i].id + '/id'
-    }
+    // var restLink = document.createElement('BUTTON')
+    // // restLink.href = '/restaurants/' + restaurants[i].id + '/id'
+    //
+    // function visitPage(){
+    //   window.location = '/restaurants/' + restaurants[i].id + '/id'
+    // }
+    //
+    // restLink.click = visitPage();
 
-    restLink.click = visitPage();
+    var restLinkPre = document.createElement('a')
+
+    var restLink = makeButton(restLinkPre)
+    restLink.href = '/restaurants/' + restaurants[i].id + '/id'
+
     restLink.innerHTML = 'Eat here!'
     restGo.appendChild(restLink)
     newRow.appendChild(restGo)
@@ -184,12 +195,76 @@ function populateYelp(res) {
   }
 }
 
-
+function makeButton(element) {
+  element.style.textDecoration = 'none';
+  element.style.fontFamily = 'Helvetica';
+  element.style.backgroundColor = '#ADA996';
+  element.style.backgroundColor = '-webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996)';
+  element.style.backgroundColor = 'linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996)';
+  element.style.color = '#333333';
+  element.style.padding = '2px 6px 2px 6px';
+  element.style.borderTop = '1px solid #CCCCCC';
+  element.style.borderRight = '1px solid #333333';
+  element.style.borderBottom = '1px solid #333333';
+  element.style.borderLeft = '1px solid #CCCCCC';
+  return element
+}
 
 function loadRestaurant(id) {
   var restaurants = JSON.parse(localStorage.getItem('restaurants'))
 
-  var restaurant = restaurants.filter(function(el) {return (el.id === id)})
+  var restaurants_result = restaurants.filter(function(el) {return (el.id === id)})
 
-  alert(JSON.stringify(restaurant))
+  var restaurant = restaurants_result[0]
+
+  var parent = document.getElementById('restaurantInfo')
+
+  var restName = document.createElement('div')
+  restName.innerHTML = restaurant.name
+  parent.appendChild(restName)
+
+  var restPic= document.createElement('div')
+  var restPicImg = document.createElement('img')
+  restPicImg.src = restaurant.image_url
+  restPicImg.style.width = '300px'
+  restPicImg.style.height = '300px'
+  restPic.appendChild(restPicImg)
+  parent.appendChild(restPic)
+
+  var restDes = document.createElement('div')
+  var stringDes = ''
+  for (var j = 0; j < restaurant.categories.length; j++) {
+    stringDes += (restaurant.categories[j].title + '; ')
+  }
+  restDes.innerHTML = stringDes
+  parent.appendChild(restDes)
+
+  var restPrice = document.createElement('div')
+  restPrice.innerHTML = restaurant.price
+  parent.appendChild(restPrice)
+
+  var restRat = document.createElement('div')
+  restRat.innerHTML = restaurant.rating
+  parent.appendChild(restRat)
+
+  var restAddr = document.createElement('div')
+  var stringAddr = ''
+  for (var k = 0; k < restaurant.location.display_address.length; k++) {
+    stringAddr += (restaurant.location.display_address[k] + ', ')
+  }
+  restAddr.innerHTML = stringAddr
+  parent.appendChild(restAddr)
+
+  var restPhone = document.createElement('div')
+  restPhone.innerHTML = restaurant.display_phone
+  parent.appendChild(restPhone)
+
+  var restUrlDiv = document.createElement('div')
+  var restUrl = document.createElement('a')
+  restUrl.href = restaurant.url
+  restUrl.innerHTML = 'Go to restaurant\'s website!'
+  restUrlDiv.appendChild(restUrl)
+  parent.appendChild(restUrlDiv)
+
+
 }
