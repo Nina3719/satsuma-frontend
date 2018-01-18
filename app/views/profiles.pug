@@ -1,0 +1,36 @@
+extends template
+
+block content
+    form
+      br
+      br
+      table#keywords(style="width:80%" align="center" cellspacing="0" cellpadding="0")
+        thead
+          tr
+            th#name Name 
+            th#pic Picture
+            th#desc Description
+            th#price Ratings 
+            th#quan Class Year
+            th Add Friend
+        tbody
+        each profile in JSON.parse(profiles)
+          tr
+            td=profile.name
+            //- td=item.pic
+            td
+              img(src=profile.picture width="200" height="200")
+              //- img(src="https://i5.walmartimages.com/asr/8af31780-9c2f-4415-8311-4b73260fdec8_1.e6217836ba781f7a591a2762bc167e52.jpeg")
+            td=profile.description
+            td=profile.ratings
+            td=profile.classYear
+            td
+              //- .fb-item
+              //-   span Quantity
+              //-   br
+              //-   input(type='number' name='quantity' placeholder='add amount')  
+              button#sub(class='button' onclick='addFriends()') Add Friend
+              
+        
+            //- <td class="nav-item"><a class="button" href="/accept/{{course.classid}}">Accept</a> </td>
+      //- button(type ='button' onclick='cart()') Add

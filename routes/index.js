@@ -56,4 +56,26 @@ router.get('/restaurants/:id/id', (req, res, next) => {
 	return res.render('restaurant-page', { id: req.params.id })
 })
 
+router.get('/profiles', (req, res, next) => {
+  request.get({
+    url: config.apiUrl + '/allusers',
+    // url: config.apiUrl + '/users',
+  }, (err, response, body) => {
+    if(err) return next(err)
+    if(!body) return next(new Error('Missing body' + body))
+    return res.render('profiles', {profiles: body})
+  })
+})
+
+// router.get('/items', (req,res,next) => {
+//   request.get({
+//     url: config.apiUrl + '/items',
+//   }, (err, response, body) => {
+//     if(err) return next(err)
+//     if(!body) return next(new Error('Missing body' + body))
+//     //items.pug
+//     return res.render('items', {items: body})
+//   })
+// })
+
 module.exports = router;
