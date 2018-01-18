@@ -2,8 +2,9 @@ extends template
 
 block content
 	div#restaurantInfo
+	div#resApts
 	form#appointmentSubmit
-		input(type="time" name="appointment_time" placeholder="12:00")
+		input(type="datetime-local" name="appointment_time")
 		- var fun = 'makeAppointment(' + "'" + id + "'" + ')'
 		button(type='submit' name="appointment_submit" value="Sign Up!" onclick=fun )
 	script.

@@ -285,15 +285,61 @@ function loadRestaurant(id) {
   restUrlDiv.appendChild(restUrl)
   parent.appendChild(restUrlDiv)
 
+  var aptParent = document.getElementById('resApts')
+
+  fetch('/appointment', {
+    headers: {
+      'Content-Type': 'application/json'
+    }, 
+    method: 'GET',
+    body: {id: restaurant.id}
+  }).then(function(res) {
+    console.log('HI')
+    console.log(res)
+  }).catch(function(err) {
+    console.log(err)
+  })
+
 }
 
 function makeAppointment(restId) {
-  console.log('hi')
 
   var form = document.forms[0]
+  var data = {}
 
-  console.log(restId)
+  if (form.appointment_time.value) {
+    data.time = form.appointment_time.value
+  } else return displayError('Must provide time')
+  if (sessionStorage.getItem('user_id')) {
+    data.user_id = sessionStorage.getItem('user_id')
+  } else return displayError('Not logged in')
 
-  var appointment_time = form.appointment_time.value
-  console.log(appointment_time)
+  if(restId) {
+    data.rest_id = restId
+  } else return displayError('Invalid Restaurant')
+  
+  console.log("PRE FETCH")
+  fetch('/appointment', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then(function(res) {
+    console.log("HELLO")
+    if (!res.ok) {
+      console.log("Not Okay!")
+    }
+    console.log(res)
+    window.location = ('/restaurants/' + restId + '/id')
+  })
+  .catch(function(err) {
+    console.log(err)
+  })
+  console.log("POST FETCH")
+
+}
+
+function testPage() {
+  window.location = '/homepage'
 }

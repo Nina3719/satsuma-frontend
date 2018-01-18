@@ -50,7 +50,28 @@ router.post('/yelptest', (req, res, next) => {
 })
 
 router.get('/restaurants/:id/id', (req, res, next) => {
+
 	return res.render('restaurant-page', { id: req.params.id })
+
+	// request.post({
+	// 	url: config.apiUrl + '/restaurant',
+	// 	form: {id: req.params.id}
+	// })
+
+})
+
+router.post('/appointment', (req, res, next) => {
+	request.post({
+		url: config.apiUrl + '/restaurant',
+		form: req.body
+	}).pipe(res)
+})
+
+router.get('/appointment', (req, res, next) => {
+	request.get({
+		url: config.apiUrl + '/restaurant',
+		form: req.body
+	}).pipe(res)
 })
 
 module.exports = router;
