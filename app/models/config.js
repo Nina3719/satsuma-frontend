@@ -1,5 +1,5 @@
 module.exports = {
-    port: 5959,
+    port: 3001,
 
     // location of backend, do not include trailing /
     apiUrl: 'http://localhost:3000',
