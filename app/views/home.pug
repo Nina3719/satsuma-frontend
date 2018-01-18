@@ -3,20 +3,20 @@ extends template
 block content
   #navbar
     #nba 
-      a(href='/homepage')
+      a(href='/home')
         span Satsuma 
           img(src="https://cdn2.bigcommerce.com/server4800/6e2ef/product_images/uploaded_images/satsuma.png?t=1429030694" width="50" height="50")
     #nb-items
-      a(href='/login')
-        span login
+      a(href='/homepage' onClick='logout()')
+        span logout
     #nb-items 
-      a(href='/')
-        span register  
+      a(href='/profile')
+        span Profile
         
   div #{restaurants}
   form
-        table#keywords(style="width:80%" align="center" cellspacing="0" cellpadding="0")
-          thead(id="yelpTable")
+    table#keywords(style="width:80%" align="center" cellspacing="0" cellpadding="0")
+      thead(id="yelpTable")
           //- tbody
           //- each item in JSON.parse(items)
           //-   tr
