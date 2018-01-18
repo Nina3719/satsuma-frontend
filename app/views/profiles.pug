@@ -1,36 +1,58 @@
 extends template
 
 block content
+    #navbar
+      #nba 
+        a(href='/home')
+          span Satsuma 
+            img(src="https://cdn2.bigcommerce.com/server4800/6e2ef/product_images/uploaded_images/satsuma.png?t=1429030694" width="50" height="50")
+      #nb-items
+        a(href='/homepage' onClick='logout()')
+          span logout
+      #nb-items 
+        a(href='/update')
+          span Update
+      #nb-items 
+        a(href='/profiles')
+          span Profile
+    
     form
       br
       br
       table#keywords(style="width:80%" align="center" cellspacing="0" cellpadding="0")
         thead
-          tr
-            th#name Name 
-            th#pic Picture
-            th#desc Description
-            th#price Ratings 
-            th#quan Class Year
-            th Add Friend
+          each profile in JSON.parse(profiles)
+            th#name= profile.name
+            //- th#pic Picture
+            //- th#desc Description
+            //- th#price Ratings 
+            //- th#quan Class Year
+            //- th Add Friend
         tbody
-        each profile in JSON.parse(profiles)
-          tr
-            td=profile.name
-            //- td=item.pic
+          each profile in JSON.parse(profiles)
             td
               img(src=profile.picture width="200" height="200")
-              //- img(src="https://i5.walmartimages.com/asr/8af31780-9c2f-4415-8311-4b73260fdec8_1.e6217836ba781f7a591a2762bc167e52.jpeg")
-            td=profile.description
-            td=profile.ratings
-            td=profile.classYear
-            td
-              //- .fb-item
-              //-   span Quantity
-              //-   br
-              //-   input(type='number' name='quantity' placeholder='add amount')  
+        tbody
+          each profile in JSON.parse(profiles)
+            td="Description: " + profile.description
+        tbody
+          each profile in JSON.parse(profiles)
+            td="Ratings: " + profile.ratings
+        tbody
+          each profile in JSON.parse(profiles)
+            td="Class Year: " + profile.classYear
+        tbody
+          each profile in JSON.parse(profiles)
+            td 
               button#sub(class='button' onclick='addFriends()') Add Friend
-              
         
-            //- <td class="nav-item"><a class="button" href="/accept/{{course.classid}}">Accept</a> </td>
-      //- button(type ='button' onclick='cart()') Add
+      
+            
+            
+            
+            //- td
+            //-   .fb-item
+            //-     span Quantity
+            //-     br
+            //-     input(type='number' name='quantity' placeholder='add amount')  
+              

@@ -15,9 +15,14 @@ router.get('/login', (req, res, next) => {
 	return res.render('login')
 })
 
+router.get('/update', (req, res, next) => {
+	return res.render('update')
+})
+
 router.get('/home', (req, res, next) => {
   return res.render('home')
 })
+
 router.post('/loginUser', (req, res, next) => {
 	console.log(req.body)
 	request.post({
