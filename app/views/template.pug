@@ -6,18 +6,6 @@ html
     
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/js/fetch.js')
-    
-    #navbar
-      #nba 
-        a(href='/homepage')
-          span Satsuma 
-            img(src="https://cdn2.bigcommerce.com/server4800/6e2ef/product_images/uploaded_images/satsuma.png?t=1429030694" width="50" height="50")
-      #nb-items
-        a(href='/login')
-          span login
-      #nb-items 
-        a(href='/')
-          span register  
         
   
   body
@@ -26,4 +14,3 @@ html
     if token
       script localStorage.token = "#{token}"
       
-

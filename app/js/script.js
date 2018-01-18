@@ -124,7 +124,7 @@ function submitSuccess(res) {
       return submitError(res);
     }
     // clearForm() to be fixed, there's ambiguity on line 95 about 'form'
-    window.location = '/homepage'
+    window.location = '/home'
 }
 
 function submitError(res, message) {
@@ -341,5 +341,10 @@ function makeAppointment(restId) {
 }
 
 function testPage() {
+  window.location = '/homepage'
+}
+
+function logout() {
+  sessionStorage.clear();
   window.location = '/homepage'
 }

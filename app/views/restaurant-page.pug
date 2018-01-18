@@ -1,13 +1,29 @@
 extends template
 
 block content
+	#navbar
+		#nba 
+			a(href='/home')
+				span Satsuma 
+					img(src="https://cdn2.bigcommerce.com/server4800/6e2ef/product_images/uploaded_images/satsuma.png?t=1429030694" width="50" height="50")
+		#nb-items
+			a(href='/homepage' onClick='logout()')
+				span logout
+		#nb-items 
+			a(href='/profiles')
+				span Profile
+				
 	div#restaurantInfo
+
 	div#resApts
+
 	form#appointmentSubmit
 		input(type="datetime-local" name="appointment_time")
 		- var fun = 'makeAppointment(' + "'" + id + "'" + ')'
 		button(type='submit' name="appointment_submit" value="Sign Up!" onclick=fun )
+		
+		<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=5tjfsqpv62ig1q3mdg3inq83go%40group.calendar.google.com&amp;color=%2329527A&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+		
 	script.
 
 		loadRestaurant("#{id}")
-
