@@ -72,6 +72,12 @@ router.post('/yelptest', (req, res, next) => {
  //  	});
 })
 
+router.post('/delete', (req, res, next) => {
+	request.delete({
+		url: config.apiUrl + '/users',
+		form: req.body
+	}).pipe(res)
+})
 router.get('/restaurants/:id/id', (req, res, next) => {
 
 	return res.render('restaurant-page', { id: req.params.id })
