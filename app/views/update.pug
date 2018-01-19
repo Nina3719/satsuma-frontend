@@ -1,0 +1,52 @@
+extends template
+
+block content
+  #navbar
+    #nba 
+      a(href='/home')
+        span Satsuma 
+          img(src="https://cdn2.bigcommerce.com/server4800/6e2ef/product_images/uploaded_images/satsuma.png?t=1429030694" width="50" height="50")
+    #nb-items
+      a(href='/homepage' onClick='logout()')
+        span logout
+    #nb-items 
+      a(href='/update')
+        span Update
+    #nb-items 
+      a(href='/profiles')
+        span Profile
+        
+  form(id="up")        
+      .form-box(style='text-align:center')
+          h2 Update Information
+          .fb-item
+              span Name
+              br
+              input(type='text' name='name' placeholder='John Smith')
+          .fb-item
+              span Password
+              br
+              input(type='password' name='password' placeholder='******')
+          .fb-item
+              span Phone Number
+              br
+              input(type='text' name='phoneNumber' placeholder='1-333-333-3333')
+          .fb-item
+              span Phone Provider
+              br
+              input(type='text' name='phoneProvider' placeholder='Verison') 
+          .fb-item
+              span Class Year
+              br
+              input(type='number' name='classYear' placeholder='2020') 
+          .fb-item
+              span Picture
+              br
+              input(type='text' name='picture' placeholder='johnsmith.jpg') 
+          .fb-item
+              span Descrption
+              br
+              input(type='text' name='description' placeholder='....') 
+              br
+              br
+              button#submit(type='button' onclick='updateUser()') Update

@@ -210,9 +210,9 @@ function populateYelp(res) {
 function makeButton(element) {
   element.style.textDecoration = 'none';
   element.style.fontFamily = 'Helvetica';
-  element.style.backgroundColor = '#ADA996';
-  element.style.backgroundColor = '-webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996)';
-  element.style.backgroundColor = 'linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996)';
+  element.style.backgroundColor = '#E6DADA';
+  element.style.backgroundColor = '-webkit-linear-gradient(to right, #274046, #E6DADA)';
+  element.style.backgroundColor = 'linear-gradient(to right, #274046, #E6DADA)';
   element.style.color = '#333333';
   element.style.padding = '2px 6px 2px 6px';
   element.style.borderTop = '1px solid #CCCCCC';
@@ -378,4 +378,8 @@ function testPage() {
 function logout() {
   sessionStorage.clear();
   window.location = '/homepage'
+}
+
+function updateUser() {
+  
 }
