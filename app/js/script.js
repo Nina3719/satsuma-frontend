@@ -73,6 +73,7 @@ function getYelp() {
 }
 
 function loginUser() {
+  
   var form = document.forms[0]
 
   var data = {}

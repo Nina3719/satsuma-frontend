@@ -26,7 +26,13 @@ block content
 					- var fun = 'makeAppointment(' + "'" + id + "'" + ')'
 				button#submit(type='submit' name="appointment_submit" onclick=fun ) Sign Up!
 				br
-						
+	
+	div#key
+		table#resApts
+			tr
+				th User
+				th Time
+			
 	div#restaurantInfo
 		
 			
@@ -37,10 +43,3 @@ block content
 		
 		loadRestaurant("#{id}")
 			
-			
-	
-	//- div
-	//- 	table#resApts
-	//- 		tr
-	//- 			th User
-	//- 			th Time
