@@ -1,4 +1,4 @@
-var form = document.forms[0]
+// var form = document.forms[0]
 /*=============================================
 =            Form Submit Functions            =
 =============================================*/
@@ -13,7 +13,10 @@ function submitUser() {
   if (form.name.value) data.name = form.name.value
   if (form.phoneNumber.value) data.phoneNumber = form.phoneNumber.value
   if (form.phoneProvider.value) data.phoneProvider = form.phoneProvider.value
+  console.log('hissss')
   if (form.classYear.value) data.classYear = form.classYear.value
+
+  console.log('g')
 
   if (!data.email) return displayError('Must provide email')
   if (!data.password) return displayError('Must provide password')
@@ -23,6 +26,8 @@ function submitUser() {
   if (!data.classYear) return displayError('Must provide class year')
   if (data.password !== form.confirm.value) return displayError('Passwords do not match')
 
+  console.log('hwww')
+
   fetch('/register', {
     headers: {
       'Content-Type': 'application/json',
@@ -30,10 +35,12 @@ function submitUser() {
     method: 'POST',
     body: JSON.stringify(data)
   }).then(function(res) {
+    console.log('1')
     res.json()
     .then(function(data){
       sessionStorage.setItem('user_id', data.userId)
       submitSuccess(res)
+      console.log('2')
     })
   })
   .catch(submitError)
@@ -72,7 +79,6 @@ function getYelp() {
 }
 
 function loginUser() {
-
   var form = document.forms[0]
   var data = {}
 
@@ -83,7 +89,9 @@ function loginUser() {
   console.log('messages')
   if (!data.email) return displayError('Must provide email')
   if (!data.password) return displayError('Must provide password')
+
   console.log(data)
+
   fetch('/loginUser', {
     headers: {
       'Content-Type': 'application/json',
