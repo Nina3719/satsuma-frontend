@@ -41,7 +41,7 @@ router.post('/register', (req, res, next) => {
 router.put('/addfriend', (req, res, next) => {
   console.log(req.body)
   request.put({
-    url: config.apiUrl + '/users',
+    url: config.apiUrl + '/users/friend',
     form: req.body
   }).pipe(res)
 })

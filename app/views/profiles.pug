@@ -37,7 +37,7 @@ block content
             td="Description: " + profile.description
         tbody
           each profile in JSON.parse(profiles)
-            td="Friends: " + profile.ratings
+            td="Followers: " + profile.ratings
         tbody
           each profile in JSON.parse(profiles)
             td="Class Year: " + profile.classYear
@@ -45,7 +45,7 @@ block content
           each profile in JSON.parse(profiles)
             td 
               - var add = 'addFriend(' + "'" + profile.name + "'" + ')'
-              button#sub(class='button' onclick=add) Add Friend
+              button#sub(class='button' onclick=add) Follow
     br
     br
     br

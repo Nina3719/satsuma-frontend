@@ -15,26 +15,31 @@ block content
 		#nb-items 
 			a(href='/profiles')
 				span Profile
-				
-	div#restaurantInfo
-
-	div
+	
+	div#appointmentSubmit
+		form(name='appointment')
+			.form-box
+				h1 Sign Up Form A Time!
+				.fb-item
+					input(type="datetime-local" name="appointment_time")
+					br
+					- var fun = 'makeAppointment(' + "'" + id + "'" + ')'
+				button#submit(type='submit' name="appointment_submit" onclick=fun ) Sign Up!
+				br
+	
+	div#key
 		table#resApts
 			tr
 				th User
 				th Time
-
-
-	form#appointmentSubmit
-		input(type="datetime-local" name="appointment_time")
-		- var fun = 'makeAppointment(' + "'" + id + "'" + ')'
-		button(type='submit' name="appointment_submit" onclick=fun ) Sign Up!
-		br
+			
+	div#restaurantInfo
 		
 			
 	div#gCal
-		<iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=5tjfsqpv62ig1q3mdg3inq83go%40group.calendar.google.com&amp;color=%2329527A&amp;ctz=America%2FNew_York" style="border-width:0" width="500" height="600" frameborder="0" scrolling="no"></iframe>
-		
+		<div data-tockify-component="mini" data-tockify-calendar="satsumaappointments"></div>
+		<script data-cfasync="false" data-tockify-script="embed" src="https://public.tockify.com/browser/embed.js"></script>		
 	script.
-
+		
 		loadRestaurant("#{id}")
+			

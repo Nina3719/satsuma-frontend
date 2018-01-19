@@ -73,6 +73,7 @@ function getYelp() {
 }
 
 function loginUser() {
+  
   var form = document.forms[0]
 
   var data = {}
@@ -312,7 +313,7 @@ function loadRestaurant(id) {
 
 function aptPopulate(res) {
 
-  var parentApt = document.getElementById('resApts') 
+  var parentApt = document.getElementById('resApts')
 
   var names = []
   var emails = []
@@ -444,13 +445,16 @@ function addFriend(params){
 
 
 function updateUser() {
+  var form = document.forms[0]
   const data = {}
 
   data.id = sessionStorage.getItem('user_id')
   if(form.name.value) data.name = form.name.value
-  if(form.price.value) data.price = form.price.value
-  if(form.quantity.value) data.quantity = form.quantity.value
-  if(form.pic.value) data.pic = form.pic.value
+  if(form.password.value) data.password = form.password.value
+  if(form.phoneNumber.value) data.phoneNumber = form.phoneNumber.value
+  if(form.phoneProvider.value) data.phoneProvider = form.phoneProvider.value
+  if(form.classYear.value) data.classYear = form.classYear.value
+  if(form.picture.value) data.picture = form.picture.value
   if(form.description.value) data.description = form.description.value
 
   console.log(data)
