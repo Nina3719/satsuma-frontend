@@ -290,7 +290,7 @@ function loadRestaurant(id) {
   fetch('/appointment', {
     headers: {
       'Content-Type': 'application/json'
-    }, 
+    },
     method: 'GET',
     body: {id: restaurant.id}
   }).then(function(res) {
@@ -317,7 +317,7 @@ function makeAppointment(restId) {
   if(restId) {
     data.rest_id = restId
   } else return displayError('Invalid Restaurant')
-  
+
   console.log("PRE FETCH")
   fetch('/appointment', {
     headers: {
@@ -350,5 +350,57 @@ function logout() {
 }
 
 function updateUser() {
-  
+
+}
+
+
+function addFriend(params){
+  console.log('q')
+  data = {}
+  if (params) {
+    data.ratings = params
+    data.id = sessionStorage.getItem('user_id')
+  }
+  fetch('/addfriend', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'PUT',
+    body: JSON.stringify(data)
+  }).then(function(res) {
+    console.log(res)
+    res.json()
+    .then(window.alert(params + ' has been added to your friends!'))
+    window.location = '/profiles'
+  })
+  .catch(submitError)
+  return false
+}
+
+
+function updateUser() {
+  const data = {}
+
+  data.id = sessionStorage.getItem('user_id')
+  if(form.name.value) data.name = form.name.value
+  if(form.price.value) data.price = form.price.value
+  if(form.quantity.value) data.quantity = form.quantity.value
+  if(form.pic.value) data.pic = form.pic.value
+  if(form.description.value) data.description = form.description.value
+
+  console.log(data)
+
+  fetch('/update', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'PUT',
+    body: JSON.stringify(data)
+  }).then(function(res){
+    res.json()
+    .then(window.alert('Your Account has been Updated!'))
+    window.location = '/update'
+  })
+  .catch(submitError)
+  return false
 }
