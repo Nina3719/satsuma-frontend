@@ -38,6 +38,21 @@ router.post('/register', (req, res, next) => {
   }).pipe(res)
 })
 
+router.put('/addfriend', (req, res, next) => {
+  console.log(req.body)
+  request.put({
+    url: config.apiUrl + '/users',
+    form: req.body
+  }).pipe(res)
+})
+
+router.put('/update', (req,res,next) => {
+  request.put({
+    url: config.apiUrl + '/users',
+    form: req.body
+  }).pipe(res)
+})
+
 router.get('/homepage', (req, res, next) => {
 	return res.render('homepage')
 })
