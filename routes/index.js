@@ -108,6 +108,13 @@ router.get('/profiles', (req, res, next) => {
   })
 })
 
+router.get('/user/:id/id', (req, res, next) => {
+	request.get({
+		url: config.apiUrl + '/users',
+		form: {id: req.params.id}
+	}).pipe(res)
+})
+
 // router.get('/items', (req,res,next) => {
 //   request.get({
 //     url: config.apiUrl + '/items',

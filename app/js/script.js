@@ -295,7 +295,7 @@ function loadRestaurant(id) {
     headers: {
       'Content-Type': 'application/json'
     },
-    method: 'GET',
+    method: 'GET'
   }).then(function(res) {
       if(!res.ok) {
         res.text()
@@ -314,22 +314,56 @@ function aptPopulate(res) {
 
   var parentApt = document.getElementById('resApts') 
 
+  var names = []
+  var emails = []
+  var restLength = res.length 
+
   for (var i = 0; i < res.length; i++) {
-    var aptRow= document.createElement('tr')
+    var reqAd = '/user/' + res[i].userId + '/id' 
 
-    var aptUser = document.createElement('td')
-    aptUser.innerHTML = res[i].userId
-    aptRow.appendChild(aptUser)
+    fetch(reqAd, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'GET'
+    }).then(function(response) {
+      if(!response.ok) {
+        response.text()
+        .then(function(message) {
+          alert(message)
+        })
+      }
+      response.json()
+      .then(function(data) {
 
-    var aptTime = document.createElement('td')
+        names.push(data.name)
+        emails.push(data.email)
 
-    console.log(res[i].time)
-
-    aptTime.innerHTML = String(res[i].time)
-    aptRow.appendChild(aptTime)
-
-    parentApt.appendChild(aptRow)
+      })
+    })
   }
+
+  window.setTimeout(function() {
+    for (var j = 0; j < res.length; j++) {
+      console.log('hi')
+      var aptRow= document.createElement('tr')
+
+      var aptTime = document.createElement('td')
+      aptTime.innerHTML = res[j].time.toLocaleString()
+      aptRow.appendChild(aptTime)
+
+      var aptUser = document.createElement('td')
+      console.log(names)
+      aptUser.innerHTML = names[j]
+      aptRow.appendChild(aptUser)
+
+      var aptEmail = document.createElement('td')
+      aptEmail.innerHTML = emails[j]
+      aptRow.appendChild(aptEmail)
+
+      parentApt.appendChild(aptRow)
+    } 
+  }, (restLength * 50))
 
 }
 
