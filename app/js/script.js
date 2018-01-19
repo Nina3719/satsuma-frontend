@@ -35,10 +35,11 @@ function submitUser() {
     method: 'POST',
     body: JSON.stringify(data)
   }).then(function(res) {
-    console.log('1')
     res.json()
     .then(function(data){
       sessionStorage.setItem('user_id', data.userId)
+      sessionStorage.setItem('name', data.name)
+      sessionStorage.setItem('email', data.email)
       submitSuccess(res)
       console.log('2')
     })
@@ -99,6 +100,12 @@ function loginUser() {
     method: 'POST',
     body: JSON.stringify(data)
   }).then(function(res) {
+    if(!res.ok){
+      res.text()
+      .then(function(message){
+        alert(message)
+      })
+    }
     res.json()
     .then(function(data){
       sessionStorage.setItem('user_id', data.userId)
@@ -371,7 +378,7 @@ function aptPopulate(res) {
       var aptRow= document.createElement('tr')
 
       var aptTime = document.createElement('td')
-      aptTime.innerHTML = res[j].time.toLocaleString()
+      aptTime.innerHTML = new Date(res[j].time)
       aptRow.appendChild(aptTime)
 
       var aptUser = document.createElement('td')
