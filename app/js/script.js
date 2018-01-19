@@ -99,6 +99,18 @@ function loginUser() {
   .catch(submitError)
 }
 
+function deleteUser() {
+  data = {}
+  data.id = sessionStorage.getItem('user_id')
+  console.log(data.id)
+  fetch('/delete', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'DELETE',
+    body: JSON.stringify(data)
+  }).then(logout()).catch(submitError)
+}
 /*=============================================
 =            Form Submit Callbacks            =
 =============================================*/
@@ -419,6 +431,20 @@ function updateUser() {
 
 }
 
+function addHandler(params, res) {
+  if (res.status == '200') {
+    console.log("success")
+    window.alert(params + ' has been added to your followers!')
+    return window.location = '/profiles'
+  }
+  window.alert('Invalid follow request')
+  return window.location = '/profiles'
+}
+
+// function addError() {
+//   window.alert('Invalid follow request')
+//   window.location = '/profiles'
+// }
 
 function addFriend(params){
   console.log('q')
@@ -436,10 +462,9 @@ function addFriend(params){
   }).then(function(res) {
     console.log(res)
     res.json()
-    .then(window.alert(params + ' has been added to your friends!'))
-    window.location = '/profiles'
+    .then(addHandler(params, res)).catch()
   })
-  .catch(submitError)
+  .catch(addError)
   return false
 }
 
