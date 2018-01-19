@@ -1,5 +1,4 @@
-
-
+var form = document.forms[0]
 /*=============================================
 =            Form Submit Functions            =
 =============================================*/
@@ -73,13 +72,15 @@ function getYelp() {
 }
 
 function loginUser() {
-  
-  var form = document.forms[0]
 
+  var form = document.forms[0]
   var data = {}
+
+  console.log('hi')
   if (form.email.value) data.email = form.email.value
   if (form.password.value) data.password = form.password.value
 
+  console.log('messages')
   if (!data.email) return displayError('Must provide email')
   if (!data.password) return displayError('Must provide password')
   console.log(data)
@@ -317,10 +318,10 @@ function aptPopulate(res) {
 
   var names = []
   var emails = []
-  var restLength = res.length 
+  var restLength = res.length
 
   for (var i = 0; i < res.length; i++) {
-    var reqAd = '/user/' + res[i].userId + '/id' 
+    var reqAd = '/user/' + res[i].userId + '/id'
 
     fetch(reqAd, {
       headers: {
@@ -363,7 +364,7 @@ function aptPopulate(res) {
       aptRow.appendChild(aptEmail)
 
       parentApt.appendChild(aptRow)
-    } 
+    }
   }, (restLength * 50))
 
 }
