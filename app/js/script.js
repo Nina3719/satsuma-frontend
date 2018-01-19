@@ -102,12 +102,12 @@ function loginUser() {
 function deleteUser() {
   data = {}
   data.id = sessionStorage.getItem('user_id')
-  console.log(data.id)
+  console.log(data)
   fetch('/delete', {
     headers: {
       'Content-Type': 'application/json',
     },
-    method: 'DELETE',
+    method: 'POST',
     body: JSON.stringify(data)
   }).then(logout()).catch(submitError)
 }
