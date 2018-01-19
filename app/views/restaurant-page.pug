@@ -18,10 +18,18 @@ block content
 				
 	div#restaurantInfo
 
+	div
+		table#resApts
+			tr
+				th User
+				th Time
+
+
 	form#appointmentSubmit
 		input(type="datetime-local" name="appointment_time")
 		- var fun = 'makeAppointment(' + "'" + id + "'" + ')'
-		button(type='submit' name="appointment_submit" value="Sign Up!" onclick=fun )
+		button(type='submit' name="appointment_submit" onclick=fun ) Sign Up!
+		br
 		
 			
 	div#gCal
