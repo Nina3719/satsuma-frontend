@@ -1,7 +1,7 @@
 extends template
 
 block content
-	#navbar
+	#navbarr
 		#nba 
 			a(href='/home')
 				span Satsuma 
@@ -16,22 +16,7 @@ block content
 			a(href='/profiles')
 				span Profile
 	
-	div#appointmentSubmit
-		form(name='appointment')
-			.form-box
-				h1 Sign Up Form A Time!
-				.fb-item
-					input(type="datetime-local" name="appointment_time")
-					br
-					- var fun = 'makeAppointment(' + "'" + id + "'" + ')'
-				button#submit(type='submit' name="appointment_submit" onclick=fun ) Sign Up!
-				br
-	
-	div#key
-		table#resApts
-			tr
-				th User
-				th Time
+	div#keyy
 			
 	div#restaurantInfo
 		
@@ -42,4 +27,20 @@ block content
 	script.
 		
 		loadRestaurant("#{id}")
+	
+	div#appointmentSubmit
+		form(name='appointment')
+			.form-boxx
+				h1 Sign Up Form A Time!
+				.fb-item
+					input(type="datetime-local" name="appointment_time")
+					br
+					- var fun = 'makeAppointment(' + "'" + id + "'" + ')'
+				button#submit(type='submit' name="appointment_submit" onclick=fun ) Sign Up!
 			
+	
+	div#key
+		table#resApts
+			tr
+				th User
+				th Time
