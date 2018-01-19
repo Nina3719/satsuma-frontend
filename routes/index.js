@@ -70,10 +70,10 @@ router.post('/appointment', (req, res, next) => {
 	}).pipe(res)
 })
 
-router.get('/appointment', (req, res, next) => {
+router.get('/appointment/:id/id', (req, res, next) => {
 	request.get({
 		url: config.apiUrl + '/restaurant',
-		form: req.body
+		form: { id: req.params.id }
 	}).pipe(res)
 })
 

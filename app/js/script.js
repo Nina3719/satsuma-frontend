@@ -287,18 +287,49 @@ function loadRestaurant(id) {
 
   var aptParent = document.getElementById('resApts')
 
-  fetch('/appointment', {
+  console.log(restaurant.id)
+
+  var reqUrl = '/appointment/' + restaurant.id + '/id'
+
+  fetch(reqUrl, {
     headers: {
       'Content-Type': 'application/json'
     }, 
     method: 'GET',
-    body: {id: restaurant.id}
   }).then(function(res) {
-    console.log('HI')
-    console.log(res)
+      if(!res.ok) {
+        res.text()
+        .then(function(message) {
+          alert(message)
+        })
+      }
+      res.json()
+      .then(aptPopulate)
   }).catch(function(err) {
     console.log(err)
   })
+}
+
+function aptPopulate(res) {
+
+  var parentApt = document.getElementById('resApts') 
+
+  for (var i = 0; i < res.length; i++) {
+    var aptRow= document.createElement('tr')
+
+    var aptUser = document.createElement('td')
+    aptUser.innerHTML = res[i].userId
+    aptRow.appendChild(aptUser)
+
+    var aptTime = document.createElement('td')
+
+    console.log(res[i].time)
+
+    aptTime.innerHTML = String(res[i].time)
+    aptRow.appendChild(aptTime)
+
+    parentApt.appendChild(aptRow)
+  }
 
 }
 
